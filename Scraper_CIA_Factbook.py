@@ -83,7 +83,7 @@ def country_topic_scraper(driver, countries):
     return all_topics
 
 
-def country_data_scraper(driver, countries, topics, transpose=True, append=False):    
+def country_data_scraper(driver, countries, topics, transpose=True, append=False, append_name='Appended'):    
     """
     Scrapes the data from the CIA Factbook country pages exported into .csv files
     The optional countries and topics parameters can accept lists to narrow the selection
@@ -105,6 +105,9 @@ def country_data_scraper(driver, countries, topics, transpose=True, append=False
     print(countries_of_interest)
     topics_of_interest = [x.lower().strip().replace(' ','-') for x in topics]
     appended_results = []
+
+    """ For future versions: if a country name has been input, that does not exist in the CIA factbook list, return an error """
+
 
     # Opening and retrieving each country's factbook page
     for country in range(0, len(countries)):
@@ -172,7 +175,7 @@ def country_data_scraper(driver, countries, topics, transpose=True, append=False
             
             if (countries[-1].replace('-',' ') == country.lower()) and (topics_of_interest[-1] == topics_of_interest[topic]) and (sub_topics[-1] == sub_topics[sub_topic -2]):
                 print('Scrape complete')
-                appended_results.to_csv(f"CIA_Factbook_Appended.csv", sep=';', index_label='index')
+                appended_results.to_csv(f"CIA_Factbook_{append_name}.csv", sep=';', index_label='index')
         
         if append == False:
             print('Scrape complete')
