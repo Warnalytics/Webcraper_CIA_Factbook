@@ -53,7 +53,7 @@ def country_list_scraper(driver):
         page_button.click()
 
     # Print 
-    print(f'URLs from {page} pages were retrieved')
+    print(f'URLs from {page+1} pages were retrieved')
 
     # Flattening the resulting nested list
     country_urls = [item for sublist in country_urls for item in sublist]

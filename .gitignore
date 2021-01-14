@@ -1,3 +1,4 @@
 chromedriver_path.py
 *.csv
 *.log
+*.xlsx
