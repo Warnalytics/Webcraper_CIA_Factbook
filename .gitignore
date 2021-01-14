@@ -2,3 +2,4 @@ chromedriver_path.py
 *.csv
 *.log
 *.xlsx
+_pycache_
